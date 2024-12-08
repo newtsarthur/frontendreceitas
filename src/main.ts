@@ -1,6 +1,18 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+// src/main.ts
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './app/app.component';
+import { config } from './app/app.config';
+
+const bootstrap = () => {
+  bootstrapApplication(AppComponent, {
+    providers: [
+      {
+        provide: 'CONFIG', // Nome do provedor
+        useValue: config,   // Valor do provedor (configuração)
+      },
+    ],
+  }).catch((err) => console.error(err));
+};
+
+bootstrap();
