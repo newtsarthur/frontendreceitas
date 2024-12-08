@@ -1,0 +1,21 @@
+<div>
+    <h2>Lista de Livros de Receitas</h2>
+  
+    <!-- Verifique se a lista de livros está vazia ou não -->
+    <div *ngIf="books.length === 0">
+      <p>Não há livros para exibir.</p>
+    </div>
+  
+    <!-- Se houver livros, exibe-os em uma lista -->
+    <ul *ngIf="books.length > 0">
+      <li *ngFor="let book of books">
+        <h3>{{ book.title }}</h3>
+        <p><strong>Autor:</strong> {{ book.author }}</p>
+        <p><strong>Gênero:</strong> {{ book.genre }}</p>
+        <p><strong>Preço:</strong> R$ {{ book.price }}</p>
+        <p><strong>Descrição:</strong> {{ book.description }}</p>
+        <img *ngIf="book.coverImageUrl" [src]="book.coverImageUrl" alt="{{ book.title }}" style="width: 100px; height: auto;" />
+      </li>
+    </ul>
+  </div>
+  
