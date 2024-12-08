@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';  // Para fazer requisições HTTP
-import { AppComponent } from './app.component';  // O componente raiz
-import { BooksComponent } from './books/books.component';  // O componente que exibe os livros
+import { RouterModule } from '@angular/router';  // Necessário para roteamento
+import { AppComponent } from './app.component';
+import { BooksComponent } from './books/books.component';  // Importando o componente
 
 @NgModule({
   declarations: [
     AppComponent,
-    BooksComponent  // Registra o componente Books
+    BooksComponent  // Declarando o BooksComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule  // Importa o módulo HTTP
+    RouterModule.forRoot([  // Configurando as rotas
+      { path: '', component: BooksComponent },  // A primeira rota é o BooksComponent
+    ]),
   ],
   providers: [],
-  bootstrap: [AppComponent]  // Define o AppComponent como o componente inicial
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
